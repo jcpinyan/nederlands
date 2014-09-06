@@ -1,11 +1,9 @@
 #! /usr/bin/env python3
+from collections import defaultdict
 
 # I/O from user
 # read in and parse sentences
 
-filename = 'sentences'
-with open(filename) as f:
-    sentences = f.readlines()
 
 def sentenceStripper(line):
     '''gets the words from a sentence'''
@@ -16,11 +14,6 @@ def sentenceStripper(line):
     woorden = set(zin.split())
     return(woorden)
     
-
-filename = 'definitions'
-with open(filename) as f:
-    definitions = f.readlines()
-
 
 
 # read in and parse definitions
@@ -58,3 +51,19 @@ class woord:
 #### deliver sentence 
 #### deliver answer with Dutch word
 #### deliver distractors with Dutch words
+
+
+filename = 'sentences'
+with open(filename) as f:
+    sentences = f.readlines()
+
+zinDict = defaultdict(list)
+for line in sentences:
+    if not line.startswith('#'):
+        for i in sentenceStripper(line): zinDict[i].append(line.strip())
+
+filename = 'definitions'
+with open(filename) as f:
+    definitions = f.readlines()
+
+
