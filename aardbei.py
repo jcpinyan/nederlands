@@ -11,7 +11,10 @@ def sentenceStripper(line):
     '''gets the words from a sentence'''
     zin = line.strip()
     for punc in [',', '.', '!', '?']:
-        zin = zin.replace(punc)
+        zin = zin.replace(punc,'')
+    zin = zin.lower()
+    woorden = set(zin.split())
+    return(woorden)
     
 
 filename = 'definitions'
