@@ -7,6 +7,13 @@ filename = 'sentences'
 with open(filename) as f:
     sentences = f.readlines()
 
+def sentenceStripper(line):
+    '''gets the words from a sentence'''
+    zin = line.strip()
+    for punc in [',', '.', '!', '?']:
+        zin = zin.replace(punc)
+    
+
 filename = 'definitions'
 with open(filename) as f:
     definitions = f.readlines()
@@ -16,6 +23,15 @@ with open(filename) as f:
 # read in and parse definitions
 # assemble woord objects
 # make a multiple choice question
-# deliver to user
-## accept user choice
-## judge and return 
+## user indicates desired tag (or all)
+## script chooses a woord with that tag
+### script chooses 3 distractors with that tag
+### script grabs English definition
+## script makes pretty question
+## user enters an answer
+### if answer is correct, deliver prize
+### if answer is wrong, deliver sentence and retest
+### if answer is wrong a second time, 
+#### deliver sentence 
+#### deliver answer with Dutch word
+#### deliver distractors with Dutch words
